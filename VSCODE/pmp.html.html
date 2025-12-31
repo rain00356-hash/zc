@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday ❤️</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: "Microsoft JhengHei", sans-serif;
+        overflow: hidden;
+    }
+
+    /* ===== 第一頁 ===== */
+    .page-start {
+        background-color: #ffd6e8;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .start-btn {
+        background-color: #ff6fa5;
+        color: white;
+        border: none;
+        padding: 20px 40px;
+        font-size: 24px;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .start-btn:hover {
+        background-color: #ff4f90;
+        transform: scale(1.05);
+    }
+
+    /* ===== 第二頁 ===== */
+    .page-card {
+        background-color: #cfe9f6;
+        height: 100vh;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* ❄️ 雪花容器 */
+    .snow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .snow span {
+        position: absolute;
+        top: -10px;
+        width: 6px;
+        height: 6px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.9;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(-10px);
+            opacity: 0.9;
+        }
+        100% {
+            transform: translateY(110vh);
+            opacity: 0.2;
+        }
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.9);
+        width: 380px;
+        padding: 25px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 3;
+    }
+
+    .hearts {
+        color: #ff8fb1;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        color: #ff6f9c;
+        margin-bottom: 15px;
+    }
+
+    p {
+        color: #555;
+        line-height: 1.7;
+        font-size: 15px;
+    }
+
+    .photo {
+        width: 260px;
+        height: 180px;
+        border-radius: 15px;
+        margin: 20px auto;
+        object-fit: cover;
+        border: 2px solid #ffb3c6;
+    }
+
+    .footer {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #777;
+    }
+</style>
+</head>
+<body>
+
+<!-- 第一頁 -->
+<div class="page-start" id="startPage">
+    <button class="start-btn" onclick="openCard()">🎉 Happy Birthday 🎉</button>
+</div>
+
+<!-- 第二頁 -->
+<div class="page-card" id="cardPage">
+
+    <!-- ❄️ 雪花 -->
+    <div class="snow" id="snow"></div>
+
+    <div class="card">
+        <div class="hearts">💗 💗 💗</div>
+
+        <h1>hi~~老公 🎂</h1>
+
+        <p>
+            謝謝你一直給我很多的勇氣，相信我能夠更好。<br>
+            也因為你給的勇氣，我真的慢慢做到了。<br>
+            你看～～我竟然可以寫一個電子卡片給你了 😊<br><br>
+
+            我知道你平常工作很累、很辛苦，<br>
+            我不是一個很會表達的老婆，<br>
+            但我真的知道，你一直為了我們的未來努力著。<br>
+            謝謝你，真的。<br><br>
+
+            生日快樂，今天是屬於你的日子 🎉<br>
+            新的一年，希望你身體健康、工作順利、也越來越愛我 ❤️<br>
+            2025 我成為你老婆，而你成為我老公<br>
+            2026 我們正式開始夫妻生活了。
+        </p>
+
+        <img src="love.jpg.jpg" class="photo">
+
+        <p>
+            謝謝你帶我去日本，看見富士山，<br>
+            還有我們人生的第一場雪 ❄️<br>
+            那些都是屬於我們的回憶，<br>
+            希望未來繼續一起創造更多。
+        </p>
+
+        <div class="footer">
+            永遠愛你的老婆 💕
+        </div>
+    </div>
+</div>
+
+<script>
+function openCard() {
+    document.getElementById("startPage").style.display = "none";
+    document.getElementById("cardPage").style.display = "flex";
+    createSnow();
+}
+
+function createSnow() {
+    const snow = document.getElementById("snow");
+    for (let i = 0; i < 40; i++) {
+        const flake = document.createElement("span");
+        flake.style.left = Math.random() * 100 + "vw";
+        flake.style.animationDuration = 5 + Math.random() * 5 + "s";
+        flake.style.animationDelay = Math.random() * 5 + "s";
+        flake.style.opacity = Math.random();
+        flake.style.transform = `scale(${Math.random() + 0.5})`;
+        snow.appendChild(flake);
+    }
+}
+</script>
+
+</body>
+</html>
